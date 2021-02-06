@@ -2,23 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function Hello({library, message, number}) {
+const lakeList = [
+    {id: "1", name: "Echo", trailhead: "Echo"},
+    {id: "2", name: "Maud", trailhead: "Wrights"},
+    {id: "3", name: "Velma", trailhead: "Bayview"}
+];
+
+function App({ lakes }) {
   return (
     <div>
-      <h1>Welcome to {library}!</h1>
-      <p>Hello World! {message}</p>
-      <p>{number} Props Total</p>
+      {lakes.map(lake => (
+        <div key={lake.id}>
+          <h2>{lake.name}</h2>
+          <p>Accessed by: {lake.trailhead}</p>
+        </div>
+      ))}
     </div>
   );
 }
 
 ReactDOM.render(
-  <Hello 
-    library="Vue" 
-    message="have fun" 
-    number={3} 
-  />,
+  <App lakes={lakeList} />,
   document.getElementById('root')
 );
-
-
